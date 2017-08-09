@@ -1,0 +1,9 @@
+syntax: glob
+
+## Build results
+obj/
+bin/
+
+## Other
+.vs/
+*.pfx

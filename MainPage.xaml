@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="EnglishLocalizer.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EnglishLocalizer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" />
+        <ListView x:Name="resultList" Grid.Row="0" Margin="5" ItemsSource="{x:Bind results}" DisplayMemberPath="Text" SelectionMode="Single" IsItemClickEnabled="True" ItemClick="resultList_ItemClick"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0">
+                <SymbolIcon Symbol="Setting" />
+                <Button.Flyout>
+                    <Flyout>
+                        <StackPanel>
+                            <ComboBox x:Name="speed" VerticalAlignment="Stretch" Header="Speed" Margin="5">
+                                <ComboBoxItem>fast</ComboBoxItem>
+                                <ComboBoxItem IsSelected="True">medium</ComboBoxItem>
+                                <ComboBoxItem>slow</ComboBoxItem>
+                            </ComboBox>
+                            <ToggleSwitch x:Name="wordByWord" Header="Word-by-Word"  Margin="5" />
+                            <HyperlinkButton x:Name="openSettings" Content="Open settings to add languages" Click="openSettings_Click" />
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <ComboBox x:Name="voices" DisplayMemberPath="DisplayName" VerticalAlignment="Stretch" Margin="5" Grid.Column="1" />
+            <Button x:Name="listenButton" Click="listenButton_Click"  Margin="5" Grid.Column="3">
+                <SymbolIcon Symbol="Microphone"  />
+            </Button>
+        </Grid>
+        <MediaElement x:Name="mediaElement" />
+    </Grid>
+</Page>
